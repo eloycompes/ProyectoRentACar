@@ -1,0 +1,32 @@
+[
+    {
+        "precioDia": 30,
+        "fechaMatriculacion": "2023-01-01",
+        "tipo": "Motocicleta",
+        "categoria": "MOTOCICLETA",
+        "estadoMantenimiento": "En plazo",
+        "id": 1,
+        "fechaMantenimiento": "2027-04-25",
+        "modelo": "Yamaha YBR"
+    },
+    {
+        "precioDia": 50,
+        "fechaMatriculacion": "2015-01-01",
+        "tipo": "Mediano",
+        "categoria": "TURISMO",
+        "estadoMantenimiento": "En plazo",
+        "id": 2,
+        "fechaMantenimiento": "2026-04-25",
+        "modelo": "Opel Corsa"
+    },
+    {
+        "precioDia": 80,
+        "fechaMatriculacion": "2000-01-20",
+        "tipo": "GranCarga",
+        "categoria": "FURGONETA",
+        "estadoMantenimiento": "En plazo",
+        "id": 3,
+        "fechaMantenimiento": "2025-10-25",
+        "modelo": "Mercedes Benz"
+    }
+]

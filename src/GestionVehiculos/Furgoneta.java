@@ -4,16 +4,19 @@ import java.time.LocalDate;
 
 public class Furgoneta extends Vehiculo {
 
-	//Atributos
-	private TipoFurgoneta tipo;
-	
 	//Constructor
-	public Furgoneta(TipoFurgoneta tipo, String modelo, LocalDate fechaMatriculacion) {
-		super(CategoriaVehiculo.FURGONETA, tipo, modelo, fechaMatriculacion);
+	protected Furgoneta(int id, TiposVehiculos tipoVehiculos, String modelo, LocalDate fechaMatriculacion)
+	{
+	    super(id, CategoriaVehiculo.FURGONETA, tipoVehiculos, modelo, fechaMatriculacion, tipoVehiculos.getPrecioDia());
 	}
-
-	//Metodos
-	public void setTipo (TipoFurgoneta tipo) {
-		this.tipo = tipo;
+	
+	public Furgoneta(TiposVehiculos tipoVehiculos, String modelo, LocalDate fechaMatriculacion) throws Exception
+	{
+		super(CategoriaVehiculo.FURGONETA, tipoVehiculos, modelo, fechaMatriculacion, tipoVehiculos.getPrecioDia());
+		if (!(tipoVehiculos.equals(TiposVehiculos.Estandar)
+				|| tipoVehiculos.equals(TiposVehiculos.GranCarga)))
+		{
+			throw new Exception ("Tipo no válido.");
+		}
 	}
 }

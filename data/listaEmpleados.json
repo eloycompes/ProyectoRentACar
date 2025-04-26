@@ -1,0 +1,20 @@
+[
+    {
+        "apellidos": "COMPES",
+        "id": 1,
+        "telefono": "63589",
+        "nombre": "ELOY",
+        "dni": "254786",
+        "email": "@ELOY",
+        "rol": "ADMINISTRADOR"
+    },
+    {
+        "apellidos": "DASD",
+        "id": 2,
+        "telefono": "62654",
+        "nombre": "PAULA",
+        "dni": "63215",
+        "email": "@PAULA",
+        "rol": "USUARIO"
+    }
+]
