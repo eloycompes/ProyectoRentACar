@@ -70,11 +70,13 @@ public class Mantenimiento {
 	
 	public LocalDate calcularProximoMantenimiento(Vehiculo vehiculo) {
 		
-		LocalDate fechaMatriculacion = vehiculo.getFechaMatriculacion();
+		LocalDate fechaUltimoMantenimiento = vehiculo.getFechaUltimoMantenimiento();
 		LocalDate hoy = LocalDate.now();
 		LocalDate fechaProximoMantenimiento;
 		
-		int aniosAntiguedad = hoy.getYear() - fechaMatriculacion.getYear();
+		LocalDate fechaReferencia = (fechaUltimoMantenimiento != null) ? fechaUltimoMantenimiento : vehiculo.getFechaMatriculacion();
+		
+		int aniosAntiguedad = hoy.getYear() - fechaReferencia.getYear();
 		
 		int mesesHastaMantenimiento = 0;
 		
@@ -110,7 +112,7 @@ public class Mantenimiento {
 	}
 	
 	public void actualizarMantenimiento(Vehiculo vehiculo) {
-		// Calcular nueva fecha de mantenimiento automáticamente por Administrador
+		// Calcular nueva fecha de mantenimiento automáticamente
 		this.fechaMantenimiento = calcularProximoMantenimiento(vehiculo);
 		// Actualizar el estado de mantenimiento
 		this.estadoMantenimiento = comprobarEstadoMantenimiento();

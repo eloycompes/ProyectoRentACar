@@ -4,17 +4,20 @@ import java.time.LocalDate;
 
 public class Turismo extends Vehiculo {
 
-	//Atributos
-	private TipoTurismo tipo;
-	
 	//Constructor
-	public Turismo(TipoTurismo tipo, String modelo, LocalDate fechaMatriculacion) {
-		super(CategoriaVehiculo.TURISMO, tipo, modelo, fechaMatriculacion);
+	protected Turismo(int id, TiposVehiculos tipoVehiculos, String modelo, LocalDate fechaMatriculacion)
+	{
+	    super(id, CategoriaVehiculo.TURISMO, tipoVehiculos, modelo, fechaMatriculacion, tipoVehiculos.getPrecioDia());
 	}
 	
-	//Metodos
-	public void setTipo (TipoTurismo tipo) {
-		this.tipo = tipo;
+	public Turismo(TiposVehiculos tipoVehiculos, String modelo, LocalDate fechaMatriculacion) throws Exception
+	{
+		super(CategoriaVehiculo.TURISMO, tipoVehiculos, modelo, fechaMatriculacion, tipoVehiculos.getPrecioDia());
+		if (!(tipoVehiculos.equals(TiposVehiculos.Pequeño)
+				|| tipoVehiculos.equals(TiposVehiculos.Mediano)
+				|| tipoVehiculos.equals(TiposVehiculos.Lujo)))
+		{
+			throw new Exception ("Tipo no válido.");
+		}
 	}
-
 }

@@ -1,2 +1,2 @@
 # ProyectoRentACar
- "Proyecto de alquiler de coches - versión provisional"
+ "Proyecto de alquiler de coches"
