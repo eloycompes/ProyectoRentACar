@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * Clase que representa a un cliente del sistema de alquiler de coches.
+ * Permite gestionar los atributos personales del cliente, como nombre, apellidos, 
+ * dirección, teléfono y email. También permite realizar operaciones CRUD (crear, leer, 
+ * actualizar, eliminar) sobre la lista de clientes, así como cargar y guardar los datos 
+ * en formato JSON.
+ * 
+ * @author [Eloy]
+ * @version 1.0
+ * @since 1.0
+ */
 public class Cliente {
 
 	//Atributos
@@ -23,6 +34,17 @@ public class Cliente {
 	private String email;	
 	
 	//Constructor
+	/**
+	 * Constructor privado para inicializar un cliente existente desde almacenamiento.
+	 * 
+	 * @param idCliente El ID único del cliente.
+	 * @param nombre Nombre del cliente.
+	 * @param apellidos Apellidos del cliente.
+	 * @param dni DNI del cliente.
+	 * @param direccion Dirección del cliente.
+	 * @param telefono Teléfono de contacto del cliente.
+	 * @param email Correo electrónico del cliente.
+	 */
 	private Cliente(int idCliente, String nombre, String apellidos, String dni, String direccion, String telefono, String email)
 	{
 		this.idCliente = idCliente;
@@ -34,6 +56,17 @@ public class Cliente {
 		this.email = email;
 	}
 	
+	/**
+	 * Constructor público para crear un cliente con los datos personales proporcionados.
+	 * El ID del cliente se genera automáticamente.
+	 * 
+	 * @param nombre Nombre del cliente.
+	 * @param apellidos Apellidos del cliente.
+	 * @param dni DNI del cliente.
+	 * @param direccion Dirección del cliente.
+	 * @param telefono Teléfono de contacto del cliente.
+	 * @param email Correo electrónico del cliente.
+	 */
 	public Cliente(String nombre, String apellidos, String dni, String direccion, String telefono, String email)
 	{
 		this.idCliente = ++contadorId;
@@ -47,70 +80,163 @@ public class Cliente {
 	
 	
 	//Getters
+	/**
+	 * Obtiene el ID único del cliente.
+	 * 
+	 * @return El ID del cliente.
+	 */
 	public int getIdCliente()
 	{
 		return idCliente;
 	}
+	
+	/**
+	 * Obtiene el nombre del cliente.
+	 * 
+	 * @return El nombre del cliente.
+	 */
 	public String getNombre()
 	{
 		return nombre;
 	}
+	
+	/**
+	 * Obtiene los apellidos del cliente.
+	 * 
+	 * @return Los apellidos del cliente.
+	 */
 	public String getApellidos()
 	{
 		return apellidos;
 	}
+	
+	/**
+	 * Obtiene el DNI del cliente.
+	 * 
+	 * @return El DNI del cliente.
+	 */
 	public String getDni()
 	{
 		return dni;
 	}
+	
+	/**
+	 * Obtiene la dirección del cliente.
+	 * 
+	 * @return La dirección del cliente.
+	 */
 	public String getDireccion()
 	{
 		return direccion;
 	}
+	
+	/**
+	 * Obtiene el teléfono de contacto del cliente.
+	 * 
+	 * @return El teléfono de contacto del cliente.
+	 */
 	public String getTelefono()
 	{
 		return telefono;
 	}
+	
+	/**
+	 * Obtiene el correo electrónico del cliente.
+	 * 
+	 * @return El correo electrónico del cliente.
+	 */
 	public String getEmail()
 	{
 		return email;
 	}
+	
+	/**
+	 * Obtiene la lista de clientes registrados.
+	 * 
+	 * @return La lista de clientes registrados.
+	 */
 	public static ArrayList<Cliente> getListaClientes()
 	{
 		return listaClientes;
 	}
 	
 	//Setters
+	/**
+	 * Establece el ID único del cliente.
+	 * 
+	 * @param id El ID único del cliente.
+	 */
 	public void setIdCliente(int idCliente)
 	{
 		this.idCliente = idCliente;
 	}
+	
+	/**
+	 * Establece el nombre del cliente.
+	 * 
+	 * @param nombre El nombre del cliente.
+	 */
 	public void setNombre(String nombre)
 	{
 		this.nombre = nombre;
 	}
+	
+	/**
+	 * Establece los apellidos del cliente.
+	 * 
+	 * @param apellidos Los apellidos del cliente.
+	 */
 	public void setApellidos(String apellidos)
 	{
 		this.apellidos = apellidos;
 	}
+	
+	/**
+	 * Establece el DNI del cliente.
+	 * 
+	 * @param dni El DNI del cliente.
+	 */
 	public void setDni(String dni)
 	{
 		this.dni = dni;
 	}
+	
+	/**
+	 * Establece la dirección del cliente.
+	 * 
+	 * @param direccion La dirección del cliente.
+	 */
 	public void setDireccion(String direccion)
 	{
 		this.direccion = direccion;
 	}
+	
+	/**
+	 * Establece el teléfono del cliente.
+	 * 
+	 * @param telefono El teléfono del cliente.
+	 */
 	public void setTelefono(String telefono)
 	{
 		this.telefono = telefono;
 	}
+	
+	/**
+	 * Establece el correo electrónico del cliente.
+	 * 
+	 * @param email El correo electrónico del cliente.
+	 */
 	public void setEmail(String email)
 	{
 		this.email = email;
 	}
 	
 	//Métodos
+	/**
+     * Representación en cadena del cliente.
+     * 
+     * @return Información detallada del cliente.
+     */
 	@Override
 	public String toString()
 	{
@@ -126,7 +252,11 @@ public class Cliente {
 	    
 	
     //CRUD
-	
+	/**
+	 * Inserta un cliente en la lista de clientes, verificando que el ID no esté duplicado.
+	 * 
+	 * @param cliente El cliente a insertar.
+	 */
 	public static void Insertar(Cliente cliente)
 	{
 		// Ver que cliente.Id no existe en ningún cliente
@@ -152,6 +282,12 @@ public class Cliente {
 		}
 	}
 	
+	/**
+	 * Lee un cliente de la lista por su ID.
+	 * 
+	 * @param id El ID del cliente a buscar.
+	 * @return El cliente correspondiente al ID, o null si no se encuentra.
+	 */
 	public static Cliente Leer(int id)
 	{
 		Cliente cliente = null;
@@ -167,6 +303,11 @@ public class Cliente {
 		return cliente;
 	}
 	
+	/**
+	 * Modifica los datos de un cliente de la lista.
+	 * 
+	 * @param clienteActualizado El cliente a modificar.
+	 */
 	public static void Modificar(Cliente clienteActualizado)
 	{
 		Cliente clienteExistente = null;
@@ -189,7 +330,12 @@ public class Cliente {
 			clienteExistente.setEmail(clienteActualizado.getEmail());
 		}
 	}
-		
+	
+	/**
+	 * Elimina un cliente de la lista por su ID.
+	 * 
+	 * @param id El ID del cliente a eliminar.
+	 */
 	public static void Eliminar(int id)
 	{
 		Boolean borrado = false;
@@ -204,6 +350,9 @@ public class Cliente {
 		}		
 	}
 
+	/**
+	 * Guarda los cambios realizados en la lista de clientes en un archivo JSON.
+	 */
 	public static void GuardarCambios() {
 		String ruta = "data/listaClientes.json";
 		File file = new File (ruta);
@@ -239,6 +388,9 @@ public class Cliente {
         }
 	}
 	
+	/**
+	 * Lee los datos de los clientes desde un archivo JSON y los carga en la lista de clientes.
+	 */
 	public static void LeerDisco()
 	{
 		String ruta = "data/listaClientes.json";

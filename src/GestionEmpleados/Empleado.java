@@ -9,7 +9,16 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
+/**
+ * Clase abstracta que representa a un empleado del sistema de gestión.
+ * Permite gestionar los atributos personales del empleado, como nombre, apellidos, 
+ * DNI, teléfono, email y rol. Además, ofrece operaciones CRUD (crear, leer, actualizar, 
+ * eliminar) sobre la lista de empleados, y permite cargar y guardar los datos en formato JSON.
+ * 
+ * @author [Eloy]
+ * @version 1.0
+ * @since 1.0
+ */
 public abstract class Empleado {
 	
 	//Atributos
@@ -24,6 +33,17 @@ public abstract class Empleado {
 	private Rol rol;
 	
 	//Constructor
+	/**
+	 * Constructor protegido para inicializar un empleado existente desde almacenamiento.
+	 * 
+	 * @param idEmpleado El ID único del empleado.
+	 * @param nombre Nombre del empleado.
+	 * @param apellidos Apellidos del empleado.
+	 * @param dni DNI del empleado.
+	 * @param telefono Teléfono de contacto del empleado.
+	 * @param email Correo electrónico del empleado.
+	 * @param rol Rol del empleado (Administrador, Usuario, etc.).
+	 */
 	protected Empleado(int idEmpleado, String nombre, String apellidos, String dni, String telefono, String email, Rol rol)
 	{
 		this.idEmpleado = idEmpleado;
@@ -35,6 +55,17 @@ public abstract class Empleado {
 		this.rol = rol;
 	}
 	
+	/**
+	 * Constructor público para crear un empleado con los datos personales proporcionados y su rol específico.
+	 * El ID del empleado se genera automáticamente.
+	 * 
+	 * @param nombre Nombre del empleado.
+	 * @param apellidos Apellidos del empleado.
+	 * @param dni DNI del empleado.
+	 * @param telefono Teléfono de contacto del empleado.
+	 * @param email Correo electrónico del empleado.
+	 * @param rol Rol del empleado (Administrador, Usuario, etc.).
+	 */
 	public Empleado(String nombre, String apellidos, String dni, String telefono, String email, Rol rol)
 	{
 		this.idEmpleado = ++contadorId;
@@ -47,66 +78,153 @@ public abstract class Empleado {
 	}
 
 	//Getters
+	/**
+	 * Obtiene el ID único del empleado.
+	 * 
+	 * @return El ID del empleado.
+	 */
 	public int getIdEmpleado()
 	{
 		return idEmpleado;
 	}
+	
+	/**
+	 * Obtiene el nombre del empleado.
+	 * 
+	 * @return El nombre del empleado.
+	 */
 	public String getNombre()
 	{
 		return nombre;
 	}
+	
+	/**
+	 * Obtiene los apellidos del empleado.
+	 * 
+	 * @return Los apellidos del empleado.
+	 */
 	public String getApellidos()
 	{
 		return apellidos;
 	}
+	
+	/**
+	 * Obtiene el DNI del empleado.
+	 * 
+	 * @return El DNI del empleado.
+	 */
 	public String getDni()
 	{
 		return dni;
 	}
+	
+	/**
+	 * Obtiene el teléfono de contacto del empleado.
+	 * 
+	 * @return El teléfono de contacto del empleado.
+	 */
 	public String getTelefono()
 	{
 		return telefono;
 	}
+	
+	/**
+	 * Obtiene el correo electrónico del empleado.
+	 * 
+	 * @return El correo electrónico del empleado.
+	 */
 	public String getEmail()
 	{
 		return email;
 	}
+	
+	/**
+	 * Obtiene el rol del empleado.
+	 * 
+	 * @return El rol del empleado.
+	 */
 	public Rol getRol()
 	{
 		return rol;
 	}
+	
+	/**
+	 * Obtiene la lista de empleados registrados.
+	 * 
+	 * @return La lista de empleados registrados.
+	 */
 	public static ArrayList<Empleado> getListaEmpleado()
 	{
 		return listaEmpleados;
 	}
 	
 	//Setters
+	/**
+	 * Establece el nombre del empleado.
+	 * 
+	 * @param nombre El nombre del empleado.
+	 */
 	public void setNombre(String nombre)
 	{
 		this.nombre = nombre;
 	}
+	
+	/**
+	 * Establece los apellidos del empleado.
+	 * 
+	 * @param apellidos Los apellidos del empleado.
+	 */
 	public void setApellidos(String apellidos)
 	{
 		this.apellidos = apellidos;
 	}
+	
+	/**
+	 * Establece el DNI del empleado.
+	 * 
+	 * @param dni El DNI del empleado.
+	 */
 	public void setDni(String dni)
 	{
 		this.dni = dni;
 	}
+	
+	/**
+	 * Establece el teléfono de contacto del empleado.
+	 * 
+	 * @param telefono El teléfono de contacto del empleado.
+	 */
 	public void setTelefono(String telefono)
 	{
 		this.telefono = telefono;
 	}
+	
+	/**
+	 * Establece el correo electrónico del empleado.
+	 * 
+	 * @param email El correo electrónico del empleado.
+	 */
 	public void setEmail(String email)
 	{
 		this.email = email;
 	}
+	
+	/**
+	 * Establece el rol del empleado.
+	 * 
+	 * @param rol El rol del empleado.
+	 */
 	public void setRol(Rol rol)
 	{
 		this.rol = rol;
 	}
 	
 	//Métodos
+	/**
+     * Representación en cadena del empleado.
+     * 
+     * @return Información detallada del empleado.
+     */
 	@Override
 	public String toString() {
 		return "Empleado {\n" +
@@ -120,6 +238,11 @@ public abstract class Empleado {
 			
 	}
 	
+	/**
+	 * Comprueba si el empleado tiene rol de administrador.
+	 * 
+	 * @return Verdadero si el rol del empleado es ADMINISTRADOR, falso en caso contrario.
+	 */
 	public boolean comprobarRol() {
 		return this.rol == rol.ADMINISTRADOR;
 	}
@@ -127,6 +250,11 @@ public abstract class Empleado {
 	
 	//CRUD
 	
+	/**
+	 * Inserta un empleado en la lista de empleados, verificando que el ID no esté duplicado.
+	 * 
+	 * @param empleado El empleado a insertar.
+	 */
 	public static void Insertar(Empleado empleado)
 	{
 		Boolean existe = false;
@@ -151,6 +279,12 @@ public abstract class Empleado {
 		}
 	}
 	
+	/**
+	 * Lee un empleado de la lista por su ID.
+	 * 
+	 * @param id El ID del empleado a buscar.
+	 * @return El empleado correspondiente al ID, o null si no se encuentra.
+	 */
 	public static Empleado Leer(int id)
 	{
 		Empleado empleado = null;
@@ -166,6 +300,11 @@ public abstract class Empleado {
 		return empleado;
 	}
 	
+	/**
+	 * Modifica los datos de un empleado en la lista.
+	 * 
+	 * @param empleadoActualizado El empleado con los datos actualizados.
+	 */
 	public static void Modificar(Empleado empleadoActualizado)
 	{
 		Empleado empleadoExistente = null;
@@ -189,6 +328,11 @@ public abstract class Empleado {
 		}
 	}
 	
+	/**
+	 * Elimina un empleado de la lista por su ID.
+	 * 
+	 * @param id El ID del empleado a eliminar.
+	 */
 	public static void Eliminar(int id)
 	{
 		Boolean borrado = false;
@@ -203,6 +347,9 @@ public abstract class Empleado {
 		}		
 	}
 	
+	/**
+	 * Guarda los cambios realizados en la lista de empleados en un archivo JSON.
+	 */
 	public static void GuardarCambios() {
 		String ruta = "data/listaEmpleados.json";
 		File file = new File (ruta);
@@ -238,6 +385,9 @@ public abstract class Empleado {
         }
 	}
 	
+	/**
+	 * Lee los datos de los empleados desde un archivo JSON y los carga en la lista de empleados.
+	 */
 	public static void LeerDisco()
 	{
 		String ruta = "data/listaEmpleados.json";

@@ -13,6 +13,16 @@ import org.json.JSONObject;
 import GestionAlquileres.Alquiler;
 import GestionMantenimientos.Mantenimiento;
 
+/**
+ * Clase que representa a un vehículo en el sistema de alquiler de coches.
+ * Permite gestionar los atributos relacionados con el vehículo, como el modelo, 
+ * la matrícula, la categoría, la fecha de matriculación, el precio por día, 
+ * y el estado de mantenimiento.
+ * 
+ * @author [Eloy]
+ * @version 1.0
+ * @since 1.0
+ */
 public abstract class Vehiculo {	
 	//Atributos
 	protected static ArrayList<Vehiculo> listaVehiculos = new ArrayList<>();
@@ -26,6 +36,16 @@ public abstract class Vehiculo {
 
 	
 	//Constructor
+	/**
+     * Constructor protegido para inicializar un vehículo existente desde almacenamiento.
+     * 
+     * @param idVehiculo ID del vehículo
+     * @param categoria Categoría del vehículo (Turismo, Furgoneta, Motocicleta)
+     * @param tipoVehiculos Tipo específico de vehículo
+     * @param modelo Modelo del vehículo
+     * @param fechaMatriculacion Fecha de matriculación
+     * @param precioDia Precio de alquiler por día
+     */
     protected Vehiculo(int idVehiculo, CategoriaVehiculo categoria, TiposVehiculos tipoVehiculos, String modelo, LocalDate fechaMatriculacion, double precioDia)
     {
         this.idVehiculo = idVehiculo;
@@ -36,6 +56,16 @@ public abstract class Vehiculo {
         this.mantenimiento = new Mantenimiento (this);
     }
     
+    /**
+     * Constructor para crear un nuevo vehículo.
+     * El ID del vehículo se genera automáticamente.
+     * 
+     * @param categoria Categoría del vehículo
+     * @param tipoVehiculos Tipo específico de vehículo
+     * @param modelo Modelo del vehículo
+     * @param fechaMatriculacion Fecha de matriculación
+     * @param precioDia Precio de alquiler por día
+     */
     public Vehiculo(CategoriaVehiculo categoria, TiposVehiculos tipoVehiculos, String modelo, LocalDate fechaMatriculacion, double precioDia)
     {
         this.idVehiculo = ++contadorId;
@@ -47,34 +77,81 @@ public abstract class Vehiculo {
     }
 	
 	//Getters
+    /**
+	 * Obtiene el ID único del vehículo.
+	 * 
+	 * @return El ID del vehículo.
+	 */
 	public int getIdVehiculo()
 	{
 		return idVehiculo;
 	}
+	
+	/**
+	 * Obtiene la categoría del vehículo.
+	 * 
+	 * @return La categoría del vehículo.
+	 */
 	public CategoriaVehiculo getCategoria()
 	{
 		return categoria;
 	}
+	
+	/**
+	 * Obtiene el modelo del vehículo.
+	 * 
+	 * @return El modelo del vehículo.
+	 */
 	public String getModelo()
 	{
 		return modelo;
 	}
+	
+	/**
+	 * Obtiene el precio por día del vehículo.
+	 * 
+	 * @return El precio por día del vehículo.
+	 */
     public double getPrecioDia()
     {
         return tipoVehiculos.getPrecioDia();
     }
+    
+    /**
+	 * Obtiene la lista de los vehículos registrados.
+	 * 
+	 * @return La lista de los vehículos registrados.
+	 */
     public static ArrayList<Vehiculo> getListaVehiculos()
     {
     	return listaVehiculos;
     }
+    
+    /**
+	 * Obtiene la fecha de matriculación del vehículo.
+	 * 
+	 * @return La fecha de matriculación del vehículo.
+	 */
 	public LocalDate getFechaMatriculacion()
 	{
 		return fechaMatriculacion;
 	}
+	
+	/**
+	 * Obtiene los datos de mantenimiento del vehículo.
+	 * 
+	 * @return Los datos de mantenimiento del vehículo.
+	 */
 	public Mantenimiento getMantenimiento()
 	{
 		return mantenimiento;
 	}
+	
+	/**
+	 * Obtiene la fecha del último mantenimiento del vehículo.
+	 * 
+	 * @return La fecha del último mantenimiento del vehículo.
+	 */
 	public LocalDate getFechaUltimoMantenimiento()
 	{
 		LocalDate fecha = null;
@@ -83,38 +160,84 @@ public abstract class Vehiculo {
         }        
         return fecha;
     }
+	
+	/**
+	 * Obtiene el tipo del vehículo.
+	 * 
+	 * @return El tipo del vehículo.
+	 */
 	public TiposVehiculos getTipoVehiculos()
 	{
 		return tipoVehiculos;
 	}
 
 	//Setters
+	/**
+	 * Establece el ID del vehículo.
+	 * 
+	 * @param ID El ID del vehículo.
+	 */
 	public void setIdVehiculo(int idVehiculo)
 	{
 		this.idVehiculo = idVehiculo;
 	}
+	
+	/**
+	 * Establece la categoría del vehículo.
+	 * 
+	 * @param categoria La categoría del vehículo.
+	 */
 	public void setCategoria(CategoriaVehiculo categoria)
 	{
 		this.categoria = categoria;
 	}
+	
+	/**
+	 * Establece el modelo del vehículo.
+	 * 
+	 * @param modelo El modelo del vehículo.
+	 */
 	public void setModelo(String modelo)
 	{
 		this.modelo = modelo;
 	}
+	
+	/**
+	 * Establece la fecha de matriculación del vehículo.
+	 * 
+	 * @param fechaMatriculacion La fecha de matriculación del vehículo.
+	 */
 	public void setFechaMatriculacion(LocalDate fechaMatriculacion)
 	{
 		this.fechaMatriculacion = fechaMatriculacion;
 	}
+	
+	/**
+	 * Establece la fecha de mantenimiento del vehículo.
+	 * 
+	 * @param fechaMantenimiento La fecha de mantenimiento del vehículo.
+	 */
 	public void setFechaMantenimiento(LocalDate fechaMantenimiento)
 	{
 		this.mantenimiento.setFechaMantenimiento(fechaMantenimiento);
 	}
+	
+	/**
+	 * Establece el tipo del vehículo.
+	 * 
+	 * @param tipoVehiculos El tipo del vehículo.
+	 */
 	public void setTipoVehiculos(TiposVehiculos tipoVehiculos)
 	{
 		this.tipoVehiculos = tipoVehiculos;
 	}
 
 	//Metodos
+	/**
+     * Representación en cadena del vehículo.
+     * 
+     * @return Información detallada del vehículo.
+     */
     @Override
     public String toString()
     {
@@ -136,6 +259,11 @@ public abstract class Vehiculo {
                 "}";
     }
     
+    /**
+     * Verifica si el vehículo está actualmente alquilado.
+     * 
+     * @return true si está alquilado, false en caso contrario
+     */
     public boolean getEstadoAlquiler()
     {
     	boolean estadoAlquiler= false;
@@ -148,10 +276,18 @@ public abstract class Vehiculo {
     	return estadoAlquiler;
     }
     
+    /**
+     * Comprueba si el vehículo tiene el mantenimiento al día.
+     * 
+     * @return true si el mantenimiento está en regla, false si está caducado
+     */
     public boolean mantenimientoAlDia() {
     	return mantenimiento.comprobarEstadoMantenimiento();
     }
     
+    /**
+     * Actualiza la información de mantenimiento del vehículo.
+     */
     public void actualizarMantenimiento() {
         if (this.mantenimiento != null) {
             this.mantenimiento.actualizarMantenimiento(this);
@@ -160,7 +296,11 @@ public abstract class Vehiculo {
     
     
     //CRUD
-    
+    /**
+	 * Inserta un vehículo en la lista de vehículos, verificando que el ID no esté duplicado.
+	 * 
+	 * @param vehiculo El vehículo a insertar.
+	 */
     public static void Insertar(Vehiculo vehiculo)
 	{
 		Boolean existe = false;
@@ -185,6 +325,12 @@ public abstract class Vehiculo {
 		}
 	}
     
+    /**
+	 * Lee un vehiculo de la lista por su ID.
+	 * 
+	 * @param id El ID del vehiculo a buscar.
+	 * @return El vehiculo correspondiente al ID, o null si no se encuentra.
+	 */
 	public static Vehiculo Leer(int id)
 	{
 		Vehiculo vehiculo = null;
@@ -200,6 +346,11 @@ public abstract class Vehiculo {
 		return vehiculo;
 	}
 	
+	/**
+	 * Modifica los datos de un vehículo en la lista.
+	 * 
+	 * @param vehiculoActualizado El vehículo con los datos actualizados.
+	 */
 	public static void Modificar(Vehiculo vehiculoActualizado)
 	{
 		Vehiculo vehiculoExistente = null;
@@ -221,6 +372,11 @@ public abstract class Vehiculo {
 		}
 	}
     
+	/**
+	 * Elimina un vehículo de la lista por su ID.
+	 * 
+	 * @param id El ID del vehículo a eliminar.
+	 */
 	public static void Eliminar(int id)
 	{
 		Boolean borrado = false;
@@ -235,6 +391,9 @@ public abstract class Vehiculo {
 		}		
 	}
 	
+	/**
+	 * Guarda los cambios realizados en la lista de vehiculos en un archivo JSON.
+	 */
 	public static void GuardarCambios() {
 		String ruta = "data/listaVehiculos.json";
 		File file = new File (ruta);
@@ -274,6 +433,9 @@ public abstract class Vehiculo {
         }
 	}
 	
+	/**
+	 * Lee los datos de los vehículos desde un archivo JSON y los carga en la lista de vehículos.
+	 */
 	public static void LeerDisco()
 	{
 	    String ruta = "data/listaVehiculos.json";
