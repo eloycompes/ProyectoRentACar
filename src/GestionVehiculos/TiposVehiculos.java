@@ -2,6 +2,21 @@ package GestionVehiculos;
 
 import java.util.List;
 
+/**
+ * Clase que representa los diferentes tipos de vehículos, con su respectivo nombre y precio por día.
+ * 
+ * Los tipos de vehículos disponibles son:
+ * - Pequeño
+ * - Mediano
+ * - Lujo
+ * - Estandar
+ * - GranCarga
+ * - Motocicleta
+ *
+ * @author [Eloy]
+ * @version 1.0
+ * @since 1.0
+ */
 public class TiposVehiculos {
 	
 	public static TiposVehiculos Pequeño = new TiposVehiculos("Pequeño", 40);
@@ -16,6 +31,12 @@ public class TiposVehiculos {
 	
 	
 	//Constructor
+	/**
+     * Constructor privado para crear un tipo de vehículo con nombre y precio por día.
+     * 
+     * @param tipo El nombre del tipo de vehículo.
+     * @param precioDia El precio por día del tipo de vehículo.
+     */
 	private TiposVehiculos (String tipo, double precioDia)
 	{
 		this.tipo = tipo;
@@ -23,17 +44,33 @@ public class TiposVehiculos {
 	}
 
 	//Getters
+	/**
+     * Obtiene el nombre del tipo de vehículo.
+     * 
+     * @return El nombre del tipo de vehículo.
+     */
 	public String getTipo()
 	{
 		return tipo;
 	}
 	
+	/**
+     * Obtiene el precio por día del tipo de vehículo.
+     * 
+     * @return El precio por día del tipo de vehículo.
+     */
 	public double getPrecioDia()
 	{
 		return precioDia;
 	}
 	
-	//Setters		
+	//Setters
+	
+	/**
+     * Establece un nuevo precio por día para el tipo de vehículo.
+     * 
+     * @param nuevoPrecio El nuevo precio por día.
+     */
 	public void setPrecioDia(double nuevoPrecio)
 	{
 		this.precioDia = nuevoPrecio;
@@ -41,11 +78,22 @@ public class TiposVehiculos {
 	
 	//Metodos
 		
+	/**
+     * Compara dos tipos de vehículos por su nombre.
+     * 
+     * @param otro El otro tipo de vehículo con el que comparar.
+     * @return true si los tipos son iguales, false en caso contrario.
+     */
 	public Boolean equals(TiposVehiculos otro)
 	{
 		return this.tipo.equals(otro.getTipo());
 	}
 	
+	/**
+     * Obtiene todos los tipos de vehículos disponibles.
+     * 
+     * @return Una lista con todos los tipos de vehículos disponibles.
+     */
 	public static List<TiposVehiculos> tiposDisponibles = List.of(
 		    TiposVehiculos.Pequeño,
 		    TiposVehiculos.Mediano,
@@ -55,6 +103,12 @@ public class TiposVehiculos {
 		    TiposVehiculos.Motocicleta
 		);
 	
+	/**
+     * Obtiene un tipo de vehículo a partir de su nombre.
+     * 
+     * @param nombre El nombre del tipo de vehículo.
+     * @return El tipo de vehículo correspondiente al nombre, o null si no se encuentra.
+     */
 	public static TiposVehiculos getTipoPorNombre(String nombre)
 	{
 		TiposVehiculos tipoVehiculo = null;
@@ -72,14 +126,29 @@ public class TiposVehiculos {
 		return tipoVehiculo;
 	}
 	
+	/**
+     * Obtiene los tipos de vehículos disponibles para la categoría "Turismo".
+     * 
+     * @return Una lista de tipos de vehículos disponibles para Turismo.
+     */
 	public static List<TiposVehiculos> getTipoTurismo() {
 	    return List.of(Pequeño, Mediano, Lujo);
 	}
 	
+	/**
+     * Obtiene los tipos de vehículos disponibles para la categoría "Furgoneta".
+     * 
+     * @return Una lista de tipos de vehículos disponibles para Furgoneta.
+     */
 	public static List<TiposVehiculos> getTipoFurgoneta() {
 	    return List.of(Estandar, GranCarga);
 	}
 
+	/**
+     * Obtiene los tipos de vehículos disponibles para la categoría "Motocicleta".
+     * 
+     * @return Una lista de tipos de vehículos disponibles para Motocicleta.
+     */
 	public static List<TiposVehiculos> getTipoMotocicleta() {
 	    return List.of(Motocicleta);
 	}
